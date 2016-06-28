@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "525F54E4DD051F499A3D9AD9BFD6AC7519AB8B10",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "525F54E4DD051F499A3D9AD9BFD6AC7519AB8B10" : 0,
+    "F8477A4A835CAAD5F8EDC48F8B7ABB6677A009CD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "74544665-E024-463B-ACCC-3B481791A14E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "525F54E4DD051F499A3D9AD9BFD6AC7519AB8B10" : "ZJMovie\/",
+    "F8477A4A835CAAD5F8EDC48F8B7ABB6677A009CD" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ZJMovie",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ZJMovie.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zhoujie1993\/ZJMovie.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "525F54E4DD051F499A3D9AD9BFD6AC7519AB8B10"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mrhyh\/iOS-Person-Collection.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F8477A4A835CAAD5F8EDC48F8B7ABB6677A009CD"
+    }
+  ]
+}
