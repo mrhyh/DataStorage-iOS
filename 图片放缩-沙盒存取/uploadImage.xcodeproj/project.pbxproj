@@ -135,6 +135,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = joanfen;
+				TargetAttributes = {
+					18E1BF9217576DB5009C5F98 = {
+						DevelopmentTeam = VD58PNDPW6;
+					};
+				};
 			};
 			buildConfigurationList = 18E1BF8D17576DB5009C5F98 /* Build configuration list for PBXProject "uploadImage" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -252,9 +257,11 @@
 		18E1BFB817576DB6009C5F98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = VD58PNDPW6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "uploadImage/uploadImage-Prefix.pch";
 				INFOPLIST_FILE = "uploadImage/uploadImage-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fenghua.u11ploadImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -263,9 +270,11 @@
 		18E1BFB917576DB6009C5F98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = VD58PNDPW6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "uploadImage/uploadImage-Prefix.pch";
 				INFOPLIST_FILE = "uploadImage/uploadImage-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fenghua.u11ploadImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -290,6 +299,7 @@
 				18E1BFB917576DB6009C5F98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -20,7 +20,6 @@ static AccountManager *accountManagerData = nil;
     return accountManagerData;
 }
 
-
 - (void)savePAccount:(PAccount *)pAccount {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:pAccount];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -48,8 +47,7 @@ static AccountManager *accountManagerData = nil;
     [userDefaults setObject:arraySave forKey:CurrentAccount];
 }
 
-- (Account *)currentAccount
-{
+- (Account *)currentAccount {
     //从本地读取账户模型
     NSUserDefaults *userDefaultsRead = [NSUserDefaults standardUserDefaults];
     NSArray *arrayRead = [userDefaultsRead arrayForKey:CurrentAccount];
@@ -63,7 +61,6 @@ static AccountManager *accountManagerData = nil;
 
 //保存模型数组
 - (void)setCAccounts:(NSMutableArray<CAccount *> *)cAccounts{
-    
     if ([cAccounts isKindOfClass:[NSMutableArray class]]){
         NSMutableArray *dataArray =[[NSMutableArray alloc] init];
         for(CAccount *cAc in cAccounts){
@@ -78,7 +75,6 @@ static AccountManager *accountManagerData = nil;
 }
 
 - (CAccount *)cAccounts{
-    
     //从本地读取账户模型
     NSUserDefaults *userDefaultsRead = [NSUserDefaults standardUserDefaults];
     NSArray *arrayRead = [userDefaultsRead arrayForKey:CAccounts];
@@ -87,7 +83,6 @@ static AccountManager *accountManagerData = nil;
     for (NSData *data in arrayRead) {
         cAccount = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     }
-    
     return cAccount;
 }
 
@@ -106,7 +101,6 @@ static AccountManager *accountManagerData = nil;
 }
 
 - (KAccount *)kAccounts{
-    
     //从本地读取账户模型
     NSUserDefaults *userDefaultsRead = [NSUserDefaults standardUserDefaults];
     NSArray *arrayRead = [userDefaultsRead arrayForKey:KAccounts];
@@ -115,7 +109,6 @@ static AccountManager *accountManagerData = nil;
     for (NSData *data in arrayRead) {
         kAccount = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     }
-    
     return kAccount;
 }
 
@@ -129,17 +122,14 @@ static AccountManager *accountManagerData = nil;
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:pAc];
             [dataArray addObject:data];
         }
-        
         NSArray *arraySave = [NSArray arrayWithArray:dataArray];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:arraySave forKey:PAccounts];
     }
-
 }
 
 #pragma mark 读取模型数组
 - (PAccount *)pAccounts{
-    
     //从本地读取账户模型
     NSUserDefaults *userDefaultsRead = [NSUserDefaults standardUserDefaults];
     NSArray *arrayRead = [userDefaultsRead arrayForKey:PAccounts];

@@ -19,8 +19,6 @@
 #define KAccounts @"kAccounts"
 
 
-
-
 @class CAccount;
 @class KAccount;
 @class Account;

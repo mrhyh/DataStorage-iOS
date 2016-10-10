@@ -75,12 +75,9 @@
     
     //NSArray *arrayWithStringRead = [NSKeyedUnarchiver unarchiveObjectWithData:arrayWithStringReadData];
     
-    
-    
     [self showSaveModelWithUserDefaults];
     [self showSavepAccountModelWithUserDefaults];
 
-    
     //addObjectsFromArray:userArrayC];
     
     // Do any additional setup after loading the view.
@@ -121,11 +118,14 @@
     NSMutableArray *pAccountArray = [[NSMutableArray alloc] init];
     [pAccountArray addObjectsFromArray:pAccountModelArray];
     
-    [AccountManager shareAccount].pAccounts = pAccountArray;
+    [AccountManager shareAccount].pAccounts = pAccountArray;  // 保存空的也可以
     
     //从本地读取账户模型
     PAccount *testP = [AccountManager shareAccount].pAccounts;
     NSLog(@"testP%@",testP.acc);
+    
+    
+    
     
     
     //保存CAccount模型
@@ -160,7 +160,6 @@
     KAccount *testK = [AccountManager shareAccount].kAccounts;
     NSLog(@"testK%@",testK.acc);
     NSLog(@"testK%@",testK.job);
-
 }
 
 @end
