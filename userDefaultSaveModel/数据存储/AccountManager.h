@@ -28,16 +28,9 @@
 
 //set、get方法中保存的下面的模型（模型数组保存方法）
 @property (nonatomic,strong) NSMutableArray<PAccount*> * pAccounts;
-@property (nonatomic,strong) NSMutableArray<KAccount*>  * kAccounts;
-@property (nonatomic,strong) NSMutableArray<CAccount*>  * cAccounts;
+
 @property (nonatomic,strong) Account *currentAccount;
 
-//单个模型保存方法(类方法，通过类的实例对象调用),例如下面
-//AccountManager *accountManager = [[AccountManager alloc] init];
-//[accountManager readPAccount];
-
-- (void)savePAccount:(PAccount *)pAccount;
-- (PAccount *)readPAccount;
 
 
 /**
@@ -46,5 +39,15 @@
  *  @return 返回一个单例对象
  */
 +(AccountManager*)shareAccount;
+
+//单个模型保存方法(类方法，通过类的实例对象调用),例如下面
+//AccountManager *accountManager = [[AccountManager alloc] init];
+//[accountManager readPAccount];
+
+- (void)savePAccount:(PAccount *)pAccount;
+- (PAccount *)readPAccount;
+
++ (void)savePAccountWithArray:(NSMutableArray<PAccount *> *)pAccounts;
++ (NSArray <PAccount *> *)readpAccounts;
 
 @end

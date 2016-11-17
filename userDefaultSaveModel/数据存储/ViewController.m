@@ -11,15 +11,27 @@
 #import "Teacher.h"
 #import "DataHandle.h"
 #import "UpdataInfo.h"
-#import "SaveModelWithUserDefaultVC.h"
+#import "Person.h"
+#import "Teacher.h"
+#import "Account.h"
+#import "PAccount.h"
+#import "AccountManager.h"
+#import "BasicConfigModel.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *listTableView;
 @property (nonatomic, strong) NSMutableArray *resourceData;
+
 @end
 
 @implementation ViewController
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 
 -(NSMutableArray *)resourceData{
@@ -29,45 +41,22 @@
     }
     return _resourceData;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /**
-     归档NSKeyedArchiver
-     */
-    Person *p = [[Person alloc]init];
-    p.name = @"我是一个对象";
-    p.age = @"这个对象今年18岁";
+    [self saveWithArchive];  //归档保存数组
     
-    Person *ppp = [[Person alloc]init];
-    ppp.name = @"一个对象";
-    ppp.age = @"这个对象今年20岁";
-    NSArray *pArr = @[p,ppp,p];
-    
-    NSString *ppath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"person.txt"];
-    NSLog(@"文件路径 --- %@",ppath);
-    [NSKeyedArchiver archiveRootObject:pArr toFile:ppath];
-    NSArray *a = [NSKeyedUnarchiver unarchiveObjectWithFile:ppath];
-    NSLog(@"a 数组是 %@",a);
-    
-    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"person.data"];
-    
-    [NSKeyedArchiver archiveRootObject:p toFile:path];
-    
-    NSLog(@"文件地址----%@",path);
-    
-    Person *p2 = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    NSLog(@"当前的用户名 %@ 年龄 = %@",p2.name,p2.age);
-    [p save];
-    Person *returnP = [Person read];
-    NSLog(@"当前的用户名 %@ 年龄 = %@",returnP.name,returnP.age);
-    
+    [self showSavepAccountModelWithUserDefaults];
+    [self showSaveModelWithUserDefaults];
  
 //    [self handelData];
     
     [self initListTableView];
 
 }
+
+
 #pragma mark 数据处理
 -(void)handelData{
     /**
@@ -163,18 +152,83 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    SaveModelWithUserDefaultVC *saveModelWithUserDefaultVC = [[SaveModelWithUserDefaultVC alloc] init];
-    [self.navigationController pushViewController:saveModelWithUserDefaultVC animated:YES];
+
+
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
+#pragma mark 各种数据保存方法
+
+//归档数组
+- (void)saveWithArchive {
+    /**
+     归档NSKeyedArchiver
+     */
+    Person *p = [[Person alloc]init];
+    p.name = @"我是一个对象";
+    p.age = @"这个对象今年18岁";
+    
+    Person *ppp = [[Person alloc]init];
+    ppp.name = @"一个对象";
+    ppp.age = @"这个对象今年20岁";
+    NSArray *pArr = @[p,ppp,p];
+    
+    NSString *ppath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"person.txt"];
+    NSLog(@"文件路径 --- %@",ppath);
+    
+    //归档数据
+    [NSKeyedArchiver archiveRootObject:pArr toFile:ppath];
+    NSArray *a = [NSKeyedUnarchiver unarchiveObjectWithFile:ppath];
+    NSLog(@"a 数组是 %@",a);
+    
+    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"person.data"];
+    [NSKeyedArchiver archiveRootObject:p toFile:path];
+    NSLog(@"文件地址----%@",path);
+}
+
+
+
+- (void)TestModelThree {
+    BasicConfigModel *model = [[BasicConfigModel alloc] init];
+}
+
+//演示保存模型到userDefaults
+- (void)showSaveModelWithUserDefaults{
+    //保存Account模型
+    Account *account = [[Account alloc] init];
+    account.acc = @"特使";
+    account.accId = @"特使";
+    account.accToken = @"特使";
+    account.crtime = @"特使";
+    
+    //保存Account模型到本地
+    [AccountManager shareAccount].currentAccount = account;
+    
+    //从本地读取Account
+    Account *getCurrentAccount = [AccountManager shareAccount].currentAccount;
+    NSLog(@"getCurrentAccount.acc%@",getCurrentAccount.acc);
+}
+
+//测试PAccount、CAccount、KAccount的保存和读取
+- (void)showSavepAccountModelWithUserDefaults
+{
+    //保存PAccount模型
+    PAccount *pAccount = [[PAccount alloc] init];
+    pAccount.acc = @"父类";
+    pAccount.nearVisible = @"测试";
+    pAccount.sex = @"测试";
+    pAccount.star = @"测试";
+    NSArray *pAccountModelArray = [NSArray arrayWithObject:pAccount];
+    NSMutableArray *pAccountArray = [[NSMutableArray alloc] init];
+    [pAccountArray addObjectsFromArray:pAccountModelArray];
+    
+    
+    //保存
+   [AccountManager savePAccountWithArray:pAccountArray];
+    //读取
+    NSArray <PAccount *> *pAccountReadArray = [AccountManager readpAccounts];
 
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end

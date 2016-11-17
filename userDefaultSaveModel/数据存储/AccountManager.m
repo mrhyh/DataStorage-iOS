@@ -35,10 +35,11 @@ static AccountManager *accountManagerData = nil;
     return model;
 }
 
-
+//将只有一层的模型保存到本地
 - (void)setCurrentAccount:(Account *)currentAccount{
 
     NSMutableArray *dataArray =[[NSMutableArray alloc] init];
+    //将数组或模型转为NSdata
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentAccount];
     [dataArray addObject:data];
 
@@ -112,8 +113,11 @@ static AccountManager *accountManagerData = nil;
     return kAccount;
 }
 
+
+
 #pragma mark  保存模型数组
-- (void)setPAccounts:(NSMutableArray<PAccount *> *)pAccounts{
+
++ (void)savePAccountWithArray:(NSMutableArray<PAccount *> *)pAccounts {
     //是pAccount模型数组的处理方式
     if([pAccounts isKindOfClass:[NSMutableArray class]]){
         //保存账户模型数组到本地
@@ -129,7 +133,7 @@ static AccountManager *accountManagerData = nil;
 }
 
 #pragma mark 读取模型数组
-- (PAccount *)pAccounts{
++ (NSArray <PAccount *> *)readpAccounts {
     //从本地读取账户模型
     NSUserDefaults *userDefaultsRead = [NSUserDefaults standardUserDefaults];
     NSArray *arrayRead = [userDefaultsRead arrayForKey:PAccounts];
@@ -141,6 +145,8 @@ static AccountManager *accountManagerData = nil;
         [pAccountArray addObject:pAccount];
     }
     
-    return pAccount;
+    return (NSArray *)pAccountArray;
 }
+
+
 @end

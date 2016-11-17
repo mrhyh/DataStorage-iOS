@@ -26,8 +26,4 @@
 +(Person*)read;
 
 
-
-
-
-
 @end
